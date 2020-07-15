@@ -4,6 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
+import androidx.annotation.IdRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.taher.newsfeeds.R
 import java.text.SimpleDateFormat
 import java.util.*
@@ -29,6 +34,20 @@ fun Context.openWebPage(url: String) {
         makeToast(R.string.no_application_to_open_web_link)
         e.printStackTrace()
     }
+}
+
+// AppCompatActivity
+fun AppCompatActivity.replaceFragmentInActivity(fragment: Fragment, @IdRes frameId: Int) {
+    supportFragmentManager.transact {
+        replace(frameId, fragment)
+    }
+}
+
+// FragmentManager
+fun FragmentManager.transact(action: FragmentTransaction.() -> Unit) {
+    beginTransaction().apply {
+        action()
+    }.commit()
 }
 
 //Date

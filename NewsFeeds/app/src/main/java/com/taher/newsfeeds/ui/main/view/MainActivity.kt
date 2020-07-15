@@ -10,7 +10,9 @@ import androidx.databinding.DataBindingUtil
 import com.taher.newsfeeds.R
 import com.taher.newsfeeds.common.ViewModelProviderFactory
 import com.taher.newsfeeds.common.makeToast
+import com.taher.newsfeeds.common.replaceFragmentInActivity
 import com.taher.newsfeeds.databinding.ActivityMainBinding
+import com.taher.newsfeeds.ui.article.list.view.ArticlesListFragment
 import com.taher.newsfeeds.ui.main.view.menu.DrawerHeader
 import com.taher.newsfeeds.ui.main.view.menu.DrawerMenuItem
 import com.taher.newsfeeds.ui.main.viewmodel.MainViewModel
@@ -42,6 +44,8 @@ class MainActivity : AppCompatActivity(), KodeinAware, DrawerHeader.DrawerCallBa
     private fun initUi() {
         setSupportActionBar(binding.mainToolbar)
         initDrawer()
+
+        replaceFragmentInActivity(ArticlesListFragment(), binding.mainFrameLayout.id)
     }
 
     private fun initDrawer() {

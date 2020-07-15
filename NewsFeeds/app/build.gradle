@@ -44,6 +44,7 @@ dependencies {
     implementation "android.arch.lifecycle:viewmodel:$lifecycle_version"
     implementation "android.arch.lifecycle:extensions:$lifecycle_version"
     implementation "com.android.support:recyclerview-v7:$recyclerview_version"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_version"
 
     /** KOIN */
     implementation "org.kodein.di:kodein-di-generic-jvm:$kodein_version"
@@ -64,6 +65,8 @@ dependencies {
     /** Placeholder */
     implementation "com.mindorks.android:placeholderview:$placeholder_version"
     kapt "com.mindorks.android:placeholderview-compiler:$placeholder_version"
+
+    implementation "com.squareup.picasso:picasso:$picasso_version"
 
     /** Testing dependencies */
     testImplementation "junit:junit:$junit_version"
