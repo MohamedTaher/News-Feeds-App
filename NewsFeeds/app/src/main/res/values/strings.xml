@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NewsFeeds</string>
+    <string name="app_name">News Feeds</string>
 
     <string name="connection_error">Internet Connection Error</string>
     <string name="open_website">OPEN WEBSITE</string>

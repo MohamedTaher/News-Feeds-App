@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 //ApiFactory to create newsapi.org Client
 object ApiFactory {
 
-    private const val dateFormatString = "yyyy-MM-dd'T'HH:mm:ss.SSSX" //handling utc dates
+    private const val dateFormatString = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 
     //Creating HttpLogging Interceptor to log the contents of request and response bodies.
     private val loggingInterceptor = HttpLoggingInterceptor()
