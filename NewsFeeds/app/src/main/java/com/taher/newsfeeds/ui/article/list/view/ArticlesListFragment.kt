@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import com.taher.newsfeeds.R
 import com.taher.newsfeeds.data.repository.DataWrapper
 import com.taher.newsfeeds.ui.ViewModelProviderFactory
-import com.taher.newsfeeds.common.makeToast
-import com.taher.newsfeeds.common.observe
+import com.taher.newsfeeds.utilities.makeToast
+import com.taher.newsfeeds.utilities.observe
 import com.taher.newsfeeds.data.model.Article
 import com.taher.newsfeeds.databinding.FragmentArticlesListBinding
 import com.taher.newsfeeds.ui.article.details.view.ArticleDetailsActivity

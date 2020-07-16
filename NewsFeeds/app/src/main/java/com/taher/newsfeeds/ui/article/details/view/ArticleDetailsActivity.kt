@@ -7,8 +7,8 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.taher.newsfeeds.R
-import com.taher.newsfeeds.common.makeToast
 import com.taher.newsfeeds.data.model.Article
+import com.taher.newsfeeds.utilities.makeToast
 
 class ArticleDetailsActivity : AppCompatActivity() {
 

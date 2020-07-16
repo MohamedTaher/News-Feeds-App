@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.taher.newsfeeds.common.ExtensionKt" />
+        <import type="com.taher.newsfeeds.utilities.ExtensionKt" />
         <variable name="viewModel" type="com.taher.newsfeeds.data.model.Article" />
     </data>
 

@@ -2,7 +2,6 @@ package com.taher.newsfeeds.utilities
 
 import android.view.View
 import android.widget.ImageView
-import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.squareup.picasso.Picasso
 import com.taher.newsfeeds.R
@@ -25,6 +24,7 @@ fun setImageUrl(imageView: ImageView, url: String?) {
 
     Picasso.get()
         .load(url)
+        .placeholder(R.drawable.placeholder)
         .error(R.drawable.placeholder)
         .into(imageView)
 }

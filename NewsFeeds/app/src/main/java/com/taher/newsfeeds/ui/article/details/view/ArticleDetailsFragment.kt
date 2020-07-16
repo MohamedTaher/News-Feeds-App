@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.taher.newsfeeds.common.observe
-import com.taher.newsfeeds.common.openWebPage
+import com.taher.newsfeeds.utilities.observe
+import com.taher.newsfeeds.utilities.openWebPage
 import com.taher.newsfeeds.ui.ViewModelProviderFactory
 import com.taher.newsfeeds.databinding.FragmentArticleDetailsBinding
 import com.taher.newsfeeds.ui.article.details.viewmodel.ArticleDetailsViewModel

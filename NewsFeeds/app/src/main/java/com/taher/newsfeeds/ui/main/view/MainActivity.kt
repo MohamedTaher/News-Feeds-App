@@ -9,8 +9,8 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.databinding.DataBindingUtil
 import com.taher.newsfeeds.R
 import com.taher.newsfeeds.ui.ViewModelProviderFactory
-import com.taher.newsfeeds.common.makeToast
-import com.taher.newsfeeds.common.replaceFragmentInActivity
+import com.taher.newsfeeds.utilities.makeToast
+import com.taher.newsfeeds.utilities.replaceFragmentInActivity
 import com.taher.newsfeeds.databinding.ActivityMainBinding
 import com.taher.newsfeeds.ui.article.list.view.ArticlesListFragment
 import com.taher.newsfeeds.ui.main.view.menu.DrawerHeader
