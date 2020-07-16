@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">News Feeds</string>
+
+    <string name="connection_error">Internet Connection Error</string>
+    <string name="open_website">OPEN WEBSITE</string>
+    <string name="no_application_to_open_web_link">"No application can handle this request. Please install a web browser or check your URL."</string>
+    <string name="no_website_to_this_article">no website to this article</string>
+
+    <string name="link_development">LINK DEVELOPMENT</string>
+    <string name="action_search">Search</string>
+
+    <string name="welcome">Welcome</string>
+
+    <string name="profile">PROFILE</string>
+
+    <string name="explore">Explore</string>
+    <string name="live_chat">Live Chat</string>
+    <string name="gallery">Gallery</string>
+    <string name="wish_list">Wish List</string>
+    <string name="e_magazine">E-Magazine</string>
+
+    <string name="author_text">By %s</string>
+
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
+    <string name="menu_icon_drawer">Icon</string>
+    <string name="selected_bar_drawer">Selected</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="profile_arrow">Profile</string>
+
+</resources>
