@@ -8,7 +8,7 @@ import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.databinding.DataBindingUtil
 import com.taher.newsfeeds.R
-import com.taher.newsfeeds.common.ViewModelProviderFactory
+import com.taher.newsfeeds.ui.ViewModelProviderFactory
 import com.taher.newsfeeds.common.makeToast
 import com.taher.newsfeeds.common.replaceFragmentInActivity
 import com.taher.newsfeeds.databinding.ActivityMainBinding
@@ -83,28 +83,7 @@ class MainActivity : AppCompatActivity(), KodeinAware, DrawerHeader.DrawerCallBa
         selectedMenuItemPosition = position
 
         val menuItem = viewModel.menuItemsViewModels.first { it.type.position == position }
-
-        when (menuItem.type) {
-            MainViewModel.MenuItemType.Explore -> {
-                makeToast(R.string.explore)
-            }
-
-            MainViewModel.MenuItemType.LiveChat -> {
-                makeToast(R.string.live_chat)
-            }
-
-            MainViewModel.MenuItemType.Gallery -> {
-                makeToast(R.string.gallery)
-            }
-
-            MainViewModel.MenuItemType.WishList -> {
-                makeToast(R.string.wish_list)
-            }
-
-            MainViewModel.MenuItemType.EMagazine -> {
-                makeToast(R.string.e_magazine)
-            }
-        }
+        makeToast(menuItem.name)
 
         //binding.mainDrawerLayout.closeDrawers()
     }

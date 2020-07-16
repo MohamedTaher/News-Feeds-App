@@ -5,14 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.taher.newsfeeds.common.ViewModelProviderFactory
+import com.taher.newsfeeds.R
+import com.taher.newsfeeds.data.DataWrapper
+import com.taher.newsfeeds.ui.ViewModelProviderFactory
+import com.taher.newsfeeds.common.makeToast
+import com.taher.newsfeeds.common.observe
 import com.taher.newsfeeds.databinding.FragmentArticlesListBinding
+import com.taher.newsfeeds.ui.article.details.view.ArticleDetailsActivity
+import com.taher.newsfeeds.ui.article.list.viewmodel.ArticlesListItemViewModel
 import com.taher.newsfeeds.ui.article.list.viewmodel.ArticlesListViewModel
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
 
-class ArticlesListFragment: Fragment(), KodeinAware {
+class ArticlesListFragment: Fragment(), KodeinAware, ArticlesRecyclerViewAdapter.Callback {
 
     override val kodein by kodein()
 
@@ -35,17 +41,45 @@ class ArticlesListFragment: Fragment(), KodeinAware {
 
         initUi()
         subscribeUi()
+        viewModel.getArticlesData()
     }
 
     private fun initUi() {
-        val adapter = ArticlesRecyclerViewAdapter()
+        val adapter = ArticlesRecyclerViewAdapter(this)
         binding.articlesRecyclerView.adapter = adapter
-        binding.articlesRecyclerView.addItemDecoration(ArticlesListItemDecoration(30))
 
-        adapter.setViewModels(viewModel.articlesListViewModels)
+        val spacing = (20 * resources.displayMetrics.density).toInt()
+        binding.articlesRecyclerView.addItemDecoration(ArticlesListItemDecoration(spacing))
     }
 
     private fun subscribeUi() {
-
+        observe(viewModel.articlesListViewModels, ::handleArticlesList)
     }
+
+    private fun handleArticlesList(articlesData: DataWrapper<ArrayList<ArticlesListItemViewModel>>) {
+        when(articlesData) {
+            is DataWrapper.Loading -> showLoadingView()
+            is DataWrapper.Success -> articlesData.data?.let { bindArticlesListData(it) }
+            is DataWrapper.Error -> articlesData.message.let { context?.makeToast(it ?: getString(R.string.connection_error))}
+        }
+    }
+
+    private fun showLoadingView() {
+        binding.swipeArticlesRecyclerView.isRefreshing = true
+    }
+
+    private fun bindArticlesListData(dataList: ArrayList<ArticlesListItemViewModel>) {
+        binding.swipeArticlesRecyclerView.isRefreshing = false
+
+        val adapter = binding.articlesRecyclerView.adapter as? ArticlesRecyclerViewAdapter
+        adapter?.setViewModels(dataList)
+    }
+
+    override fun onTapArticle(item: ArticlesListItemViewModel) {
+        context?.let {
+            val intent = ArticleDetailsActivity.getIntent(it, item)
+            startActivity(intent)
+        }
+    }
+
 }

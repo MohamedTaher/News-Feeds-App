@@ -9,11 +9,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
 import com.taher.newsfeeds.R
 import java.text.SimpleDateFormat
 import java.util.*
+import androidx.lifecycle.Observer
 
-//Context
+// LifecycleOwner
+fun <T> LifecycleOwner.observe(liveData: LiveData<T>, action: (t: T) -> Unit) {
+    liveData.observe(this, Observer { it?.let { t -> action(t) } })
+}
+
+// Context
 fun Context.makeToast(messageId: Int) {
     val message = resources?.getString(messageId) ?: ""
     makeToast(message)

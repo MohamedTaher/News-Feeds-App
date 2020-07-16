@@ -1,8 +1,9 @@
-package com.taher.newsfeeds.common
+package com.taher.newsfeeds.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.taher.newsfeeds.data.DataRepository
+import com.taher.newsfeeds.ui.article.details.viewmodel.ArticleDetailsViewModel
 import com.taher.newsfeeds.ui.article.list.viewmodel.ArticlesListViewModel
 import com.taher.newsfeeds.ui.main.viewmodel.MainViewModel
 import org.kodein.di.Kodein
@@ -24,6 +25,10 @@ class ViewModelProviderFactory(override val kodein: Kodein): ViewModelProvider.N
 
             modelClass.isAssignableFrom(ArticlesListViewModel::class.java) -> {
                 return ArticlesListViewModel(dataRepository) as T
+            }
+
+            modelClass.isAssignableFrom(ArticleDetailsViewModel::class.java) -> {
+                return ArticleDetailsViewModel(dataRepository) as T
             }
 
         }

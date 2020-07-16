@@ -8,7 +8,7 @@ import com.taher.newsfeeds.R
 import com.taher.newsfeeds.databinding.ArticlesListItemLayoutBinding
 import com.taher.newsfeeds.ui.article.list.viewmodel.ArticlesListItemViewModel
 
-class ArticlesRecyclerViewAdapter(): RecyclerView.Adapter<ArticlesRecyclerViewAdapter.ViewHolder>() {
+class ArticlesRecyclerViewAdapter(private val callback: Callback): RecyclerView.Adapter<ArticlesRecyclerViewAdapter.ViewHolder>() {
 
     private val articlesViewModels = ArrayList<ArticlesListItemViewModel>()
 
@@ -32,7 +32,17 @@ class ArticlesRecyclerViewAdapter(): RecyclerView.Adapter<ArticlesRecyclerViewAd
     inner class ViewHolder(private val binding: ArticlesListItemLayoutBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
             val itemViewModel = articlesViewModels[position]
-            binding.viewModel = itemViewModel
+            binding.apply {
+                viewModel = itemViewModel
+
+                root.setOnClickListener {
+                    callback.onTapArticle(itemViewModel)
+                }
+            }
         }
+    }
+
+    interface Callback{
+        fun onTapArticle(item: ArticlesListItemViewModel)
     }
 }
