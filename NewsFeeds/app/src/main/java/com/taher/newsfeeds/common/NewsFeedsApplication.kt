@@ -1,8 +1,11 @@
 package com.taher.newsfeeds.common
 
 import android.app.Application
-import com.taher.newsfeeds.data.CachedData
-import com.taher.newsfeeds.data.DataRepository
+import com.taher.newsfeeds.data.repository.CachedData
+import com.taher.newsfeeds.data.repository.DataRepository
+import com.taher.newsfeeds.data.repository.source.remote.RemoteDataSource
+import com.taher.newsfeeds.data.repository.source.remote.network.ApiFactory
+import com.taher.newsfeeds.data.repository.source.remote.network.ApiInterface
 import com.taher.newsfeeds.ui.ViewModelProviderFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -16,9 +19,11 @@ class NewsFeedsApplication: Application(), KodeinAware {
     override val kodein: Kodein = Kodein.lazy {
         import(androidXModule(this@NewsFeedsApplication))
 
-        bind<CachedData>()                  with singleton { CachedData() }
-        bind<DataRepository>()              with singleton { DataRepository(kodein) }
+        bind<ApiInterface>()        with singleton { ApiFactory.articleDataApi }
+        bind<CachedData>()          with singleton { CachedData() }
+        bind<DataRepository>()      with singleton {DataRepository(kodein)}
 
         bind<ViewModelProviderFactory>()    with provider { ViewModelProviderFactory(kodein) }
+        bind<RemoteDataSource>()            with provider { RemoteDataSource(kodein) }
     }
 }

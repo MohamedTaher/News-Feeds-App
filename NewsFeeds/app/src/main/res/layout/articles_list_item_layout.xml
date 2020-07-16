@@ -5,7 +5,7 @@
 
     <data>
         <import type="com.taher.newsfeeds.common.ExtensionKt" />
-        <variable name="viewModel" type="com.taher.newsfeeds.ui.article.list.viewmodel.ArticlesListItemViewModel" />
+        <variable name="viewModel" type="com.taher.newsfeeds.data.model.Article" />
     </data>
 
     <androidx.cardview.widget.CardView

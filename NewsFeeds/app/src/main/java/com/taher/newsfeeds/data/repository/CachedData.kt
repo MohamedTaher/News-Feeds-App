@@ -1,4 +1,4 @@
-package com.taher.newsfeeds.data
+package com.taher.newsfeeds.data.repository
 
 class CachedData {
 

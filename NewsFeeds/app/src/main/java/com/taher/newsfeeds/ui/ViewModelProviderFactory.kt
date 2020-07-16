@@ -2,7 +2,7 @@ package com.taher.newsfeeds.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.taher.newsfeeds.data.DataRepository
+import com.taher.newsfeeds.data.repository.DataRepository
 import com.taher.newsfeeds.ui.article.details.viewmodel.ArticleDetailsViewModel
 import com.taher.newsfeeds.ui.article.list.viewmodel.ArticlesListViewModel
 import com.taher.newsfeeds.ui.main.viewmodel.MainViewModel

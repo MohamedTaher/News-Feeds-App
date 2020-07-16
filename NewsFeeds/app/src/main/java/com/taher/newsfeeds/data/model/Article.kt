@@ -1,16 +1,16 @@
-package com.taher.newsfeeds.ui.article.list.viewmodel
+package com.taher.newsfeeds.data.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 @Parcelize
-data class ArticlesListItemViewModel(
-    val id: Int,
+data class Article(
     val author: String,
     val title: String,
-    val urlToImage: String,
     val description: String,
-    val publishedAt: Date,
-    val url: String
+    val url: String,
+    val urlToImage: String,
+    val publishedAt: Date
+
 ): Parcelable

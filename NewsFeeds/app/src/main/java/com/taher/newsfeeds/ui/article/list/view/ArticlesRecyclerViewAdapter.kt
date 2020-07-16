@@ -5,14 +5,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.taher.newsfeeds.R
+import com.taher.newsfeeds.data.model.Article
 import com.taher.newsfeeds.databinding.ArticlesListItemLayoutBinding
-import com.taher.newsfeeds.ui.article.list.viewmodel.ArticlesListItemViewModel
 
 class ArticlesRecyclerViewAdapter(private val callback: Callback): RecyclerView.Adapter<ArticlesRecyclerViewAdapter.ViewHolder>() {
 
-    private val articlesViewModels = ArrayList<ArticlesListItemViewModel>()
+    private val articlesViewModels = ArrayList<Article>()
 
-    fun setViewModels(items: ArrayList<ArticlesListItemViewModel>) {
+    fun setViewModels(items: List<Article>) {
         articlesViewModels.clear()
         articlesViewModels.addAll(items)
         notifyDataSetChanged()
@@ -43,6 +43,6 @@ class ArticlesRecyclerViewAdapter(private val callback: Callback): RecyclerView.
     }
 
     interface Callback{
-        fun onTapArticle(item: ArticlesListItemViewModel)
+        fun onTapArticle(item: Article)
     }
 }

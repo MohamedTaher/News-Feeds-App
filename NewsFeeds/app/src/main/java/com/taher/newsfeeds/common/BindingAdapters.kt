@@ -1,8 +1,8 @@
 package com.taher.newsfeeds.common
 
-import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.squareup.picasso.Picasso
 import com.taher.newsfeeds.R
@@ -18,8 +18,13 @@ fun View.bindIsGone(isGone: Boolean) {
 
 @BindingAdapter(value = ["imageUrl"], requireAll = false)
 fun setImageUrl(imageView: ImageView, url: String?) {
+    if (url != null && url.isEmpty()) {
+        imageView.setImageResource(R.drawable.placeholder)
+        return
+    }
+
     Picasso.get()
         .load(url)
-        .placeholder(R.drawable.placeholder)
+        .error(R.drawable.placeholder)
         .into(imageView)
 }

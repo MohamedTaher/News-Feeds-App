@@ -6,13 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.taher.newsfeeds.R
-import com.taher.newsfeeds.data.DataWrapper
+import com.taher.newsfeeds.data.repository.DataWrapper
 import com.taher.newsfeeds.ui.ViewModelProviderFactory
 import com.taher.newsfeeds.common.makeToast
 import com.taher.newsfeeds.common.observe
+import com.taher.newsfeeds.data.model.Article
 import com.taher.newsfeeds.databinding.FragmentArticlesListBinding
 import com.taher.newsfeeds.ui.article.details.view.ArticleDetailsActivity
-import com.taher.newsfeeds.ui.article.list.viewmodel.ArticlesListItemViewModel
 import com.taher.newsfeeds.ui.article.list.viewmodel.ArticlesListViewModel
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
@@ -41,6 +41,7 @@ class ArticlesListFragment: Fragment(), KodeinAware, ArticlesRecyclerViewAdapter
 
         initUi()
         subscribeUi()
+
         viewModel.getArticlesData()
     }
 
@@ -54,28 +55,38 @@ class ArticlesListFragment: Fragment(), KodeinAware, ArticlesRecyclerViewAdapter
 
     private fun subscribeUi() {
         observe(viewModel.articlesListViewModels, ::handleArticlesList)
-    }
 
-    private fun handleArticlesList(articlesData: DataWrapper<ArrayList<ArticlesListItemViewModel>>) {
-        when(articlesData) {
-            is DataWrapper.Loading -> showLoadingView()
-            is DataWrapper.Success -> articlesData.data?.let { bindArticlesListData(it) }
-            is DataWrapper.Error -> articlesData.message.let { context?.makeToast(it ?: getString(R.string.connection_error))}
+        binding.swipeArticlesRecyclerView.setOnRefreshListener {
+            viewModel.getArticlesData()
         }
     }
 
-    private fun showLoadingView() {
-        binding.swipeArticlesRecyclerView.isRefreshing = true
+    private fun handleArticlesList(articlesData: DataWrapper<List<Article>>) {
+        when(articlesData) {
+            is DataWrapper.Loading -> showLoadingView(true)
+            is DataWrapper.Success -> articlesData.data?.let { bindArticlesListData(it) }
+            is DataWrapper.Error -> articlesData.message.let { popupError(it) }
+        }
     }
 
-    private fun bindArticlesListData(dataList: ArrayList<ArticlesListItemViewModel>) {
-        binding.swipeArticlesRecyclerView.isRefreshing = false
+    private fun showLoadingView(isVisible: Boolean) {
+        binding.swipeArticlesRecyclerView.isRefreshing = isVisible
+    }
+
+    private fun bindArticlesListData(dataList: List<Article>) {
+        showLoadingView(false)
 
         val adapter = binding.articlesRecyclerView.adapter as? ArticlesRecyclerViewAdapter
         adapter?.setViewModels(dataList)
     }
 
-    override fun onTapArticle(item: ArticlesListItemViewModel) {
+    private fun popupError(message: String?) {
+        showLoadingView(false)
+
+        context?.makeToast(message ?: getString(R.string.connection_error))
+    }
+
+    override fun onTapArticle(item: Article) {
         context?.let {
             val intent = ArticleDetailsActivity.getIntent(it, item)
             startActivity(intent)

@@ -8,8 +8,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.taher.newsfeeds.R
 import com.taher.newsfeeds.common.makeToast
-import com.taher.newsfeeds.ui.article.list.viewmodel.ArticlesListItemViewModel
-
+import com.taher.newsfeeds.data.model.Article
 
 class ArticleDetailsActivity : AppCompatActivity() {
 
@@ -40,7 +39,7 @@ class ArticleDetailsActivity : AppCompatActivity() {
 
         const val ARTICLE_ITEM = "Article Item"
 
-        fun getIntent(context: Context, articleItem: ArticlesListItemViewModel): Intent {
+        fun getIntent(context: Context, articleItem: Article): Intent {
             return Intent(context, ArticleDetailsActivity::class.java).apply {
                 putExtra(ARTICLE_ITEM, articleItem)
             }
