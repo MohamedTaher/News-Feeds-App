@@ -7,7 +7,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-//ApiFactory to create FootBallData Client
+//ApiFactory to create newsapi.org Client
 object ApiFactory {
 
     private const val dateFormatString = "yyyy-MM-dd'T'HH:mm:ss.SSSX" //handling utc dates

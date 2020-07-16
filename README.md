@@ -12,7 +12,7 @@ It's a sample app that displays news.
 
 ---
 
-## Why MVVM?
+## Why Model-View-ViewModel (ie MVVM)?
 * MVVM is one of the architectural patterns which enhances separation of concerns.
 * Google introduced architecture components which includes **LiveData** and **ViewModel** which facilitates developing Android app using MVVM pattern.
 * It's helpful to solve common problems like **Tight Coupling** and **Testability**.
@@ -38,7 +38,7 @@ It's a sample app that displays news.
 2. **data**: It contains models and data repository.
 3. **ui**: View classes along with their corresponding ViewModel.
 4. **utilities**: Utility classes.
-5. **data.repository(test)**: Test cases for DataRepository class.
+5. **data.repository (test)**: Test cases for DataRepository class.
 
 <p align="center">
     <img src="https://i.imgur.com/BTdJxcj.png" width="300">

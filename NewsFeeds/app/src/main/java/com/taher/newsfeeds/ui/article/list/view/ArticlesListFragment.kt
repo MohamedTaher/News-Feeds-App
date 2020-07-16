@@ -65,7 +65,7 @@ class ArticlesListFragment: Fragment(), KodeinAware, ArticlesRecyclerViewAdapter
         when(articlesData) {
             is DataWrapper.Loading -> showLoadingView(true)
             is DataWrapper.Success -> articlesData.data?.let { bindArticlesListData(it) }
-            is DataWrapper.Error -> articlesData.message.let { popupError(it) }
+            is DataWrapper.Error -> popupError(articlesData.message)
         }
     }
 
