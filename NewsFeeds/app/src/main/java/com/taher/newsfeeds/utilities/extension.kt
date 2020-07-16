@@ -1,4 +1,4 @@
-package com.taher.newsfeeds.common
+package com.taher.newsfeeds.utilities
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent

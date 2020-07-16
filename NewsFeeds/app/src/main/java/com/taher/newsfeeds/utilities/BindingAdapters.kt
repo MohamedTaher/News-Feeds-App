@@ -1,4 +1,4 @@
-package com.taher.newsfeeds.common
+package com.taher.newsfeeds.utilities
 
 import android.view.View
 import android.widget.ImageView

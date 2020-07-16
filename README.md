@@ -37,10 +37,11 @@ It's a sample app that displays news.
 1. **common**: It has common classes like Application class.
 2. **data**: It contains models and data repository.
 3. **ui**: View classes along with their corresponding ViewModel.
-4. **data.repository(test)**: Test cases for DataRepository class.
+4. **utilities**: Utility classes.
+5. **data.repository(test)**: Test cases for DataRepository class.
 
 <p align="center">
-    <img src="https://i.imgur.com/ar62Xqp.png" width="300">
+    <img src="https://i.imgur.com/BTdJxcj.png" width="300">
 </p>
 
 ---
