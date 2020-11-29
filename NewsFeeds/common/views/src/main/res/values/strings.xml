@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">App</string>
+
+    <string name="dialog_default_title">ُTitle</string>
+    <string name="dialog_ok">Yes</string>
+    <string name="dialog_thanks">Thanks</string>
+    <string name="dialog_cancel">No</string>
+
+    <string name="ok">OK</string>
+    <string name="done">Done</string>
+    <string name="retry">Retry</string>
+
+    <string name="loading">Loading</string>
+    <string name="error">Error</string>
+    <string name="warning">Warning</string>
+    <string name="email_not_valid">Email is not valid</string>
+    <string name="phone_number_not_valid">Phone number is not valid</string>
+    <string name="password_length_not_valid">Password must be minimum of 6 characters</string>
+
+</resources>

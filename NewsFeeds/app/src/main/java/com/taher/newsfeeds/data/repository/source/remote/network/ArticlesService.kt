@@ -5,8 +5,8 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface ApiInterface {
+interface ArticlesService {
 
     @GET(ApiConfig.GET_ARTICLES)
-    fun getArticles(@Query("source") source: String, @Query("apiKey") apiKey: String): Call<GetArticlesResponse>
+    fun getArticles(@Query("source") source: String, @Query("apiKey") apiKey: String = ApiConfig.API_KEY): Call<GetArticlesResponse>
 }

@@ -6,16 +6,17 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.taher.newsfeeds.data.model.Article
 import com.taher.newsfeeds.data.repository.DataWrapper
-import com.taher.newsfeeds.data.repository.DataRepository
-import java.util.*
-import kotlin.collections.ArrayList
+import com.taher.newsfeeds.usecase.GetAllArticlesUseCase
+import javax.inject.Inject
 
-class ArticlesListViewModel(private val dataRepository: DataRepository): ViewModel() {
+class ArticlesListViewModel @Inject constructor(
+    private val getAllArticlesUseCase: GetAllArticlesUseCase
+): ViewModel() {
 
     private val reloadData: MutableLiveData<Boolean> = MutableLiveData()
 
     val articlesListViewModels: LiveData<DataWrapper<List<Article>>> = Transformations.switchMap(reloadData) {
-        dataRepository.getAllArticles()
+        getAllArticlesUseCase.invoke()
     }
 
     fun getArticlesData() {

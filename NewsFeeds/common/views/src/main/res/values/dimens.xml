@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="card_radius">8dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
+
+    <dimen name="et_corner_radius">6dp</dimen>
+    <dimen name="button_width">120dp</dimen>
+    <dimen name="button_height">40dp</dimen>
+
+    <dimen name="min_button_width">60dp</dimen>
+    <dimen name="min_button_height">60dp</dimen>
+
+    <dimen name="alert_width">600dp</dimen>
+    <dimen name="common_circle_width">3dp</dimen>
+    <dimen name="progress_circle_radius">100dp</dimen>
+
+    <dimen name="menu_max_width">300dp</dimen>
+
+</resources>

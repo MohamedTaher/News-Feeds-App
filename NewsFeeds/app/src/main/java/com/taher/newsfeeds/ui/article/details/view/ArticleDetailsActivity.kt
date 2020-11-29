@@ -8,7 +8,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.taher.newsfeeds.R
 import com.taher.newsfeeds.data.model.Article
-import com.taher.newsfeeds.utilities.makeToast
+import com.taher.views.extension.makeToast
 
 class ArticleDetailsActivity : AppCompatActivity() {
 
@@ -18,7 +18,7 @@ class ArticleDetailsActivity : AppCompatActivity() {
 
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
-            title = getString(R.string.link_development)
+            title = getString(R.string.app_name)
         }
     }
 

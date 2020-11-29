@@ -4,29 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.taher.newsfeeds.utilities.observe
-import com.taher.newsfeeds.utilities.openWebPage
-import com.taher.newsfeeds.ui.ViewModelProviderFactory
+import com.taher.views.extension.observe
+import com.taher.views.extension.openWebPage
 import com.taher.newsfeeds.databinding.FragmentArticleDetailsBinding
 import com.taher.newsfeeds.ui.article.details.viewmodel.ArticleDetailsViewModel
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.kodein
-import org.kodein.di.generic.instance
+import com.taher.views.base.BaseFragment
 
-class ArticleDetailsFragment: Fragment(), KodeinAware {
-
-    override val kodein by kodein()
+class ArticleDetailsFragment: BaseFragment<ArticleDetailsViewModel>(ArticleDetailsViewModel::class.java) {
 
     private lateinit var binding: FragmentArticleDetailsBinding
-    private lateinit var viewModel: ArticleDetailsViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentArticleDetailsBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
-
-        val viewModelFactory: ViewModelProviderFactory by kodein.instance()
-        viewModel = viewModelFactory.create(ArticleDetailsViewModel::class.java)
         binding.viewModel = viewModel
 
         activity?.intent?.apply {

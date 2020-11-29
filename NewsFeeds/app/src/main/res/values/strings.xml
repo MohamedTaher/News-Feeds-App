@@ -6,7 +6,6 @@
     <string name="no_application_to_open_web_link">"No application can handle this request. Please install a web browser or check your URL."</string>
     <string name="no_website_to_this_article">no website to this article</string>
 
-    <string name="link_development">LINK DEVELOPMENT</string>
     <string name="action_search">Search</string>
 
     <string name="welcome">Welcome</string>

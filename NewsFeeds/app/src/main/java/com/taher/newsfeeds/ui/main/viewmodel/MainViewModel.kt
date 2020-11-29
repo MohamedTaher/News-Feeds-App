@@ -2,9 +2,9 @@ package com.taher.newsfeeds.ui.main.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.taher.newsfeeds.R
-import com.taher.newsfeeds.data.repository.DataRepository
+import javax.inject.Inject
 
-class MainViewModel(dataRepository: DataRepository): ViewModel() {
+class MainViewModel @Inject constructor(): ViewModel() {
 
     enum class MenuItemType(val position: Int) {
         Explore     (1),
@@ -14,7 +14,7 @@ class MainViewModel(dataRepository: DataRepository): ViewModel() {
         EMagazine   (5),
     }
 
-    private val name = dataRepository.cache.name
+    private val name = "Tony Roshdy" //TODO read it from cached data
 
     var menuHeaderViewModel = DrawerHeaderViewModel(name)
     var menuItemsViewModels = arrayListOf(

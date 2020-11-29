@@ -1,41 +1,27 @@
 package com.taher.newsfeeds.ui.main.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.databinding.DataBindingUtil
 import com.taher.newsfeeds.R
-import com.taher.newsfeeds.ui.ViewModelProviderFactory
-import com.taher.newsfeeds.utilities.makeToast
-import com.taher.newsfeeds.utilities.replaceFragmentInActivity
 import com.taher.newsfeeds.databinding.ActivityMainBinding
 import com.taher.newsfeeds.ui.article.list.view.ArticlesListFragment
 import com.taher.newsfeeds.ui.main.view.menu.DrawerHeader
 import com.taher.newsfeeds.ui.main.view.menu.DrawerMenuItem
 import com.taher.newsfeeds.ui.main.viewmodel.MainViewModel
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.kodein
-import org.kodein.di.generic.instance
+import com.taher.views.base.BaseActivity
+import com.taher.views.extension.makeToast
+import com.taher.views.extension.replaceFragmentInActivity
 
-class MainActivity : AppCompatActivity(), KodeinAware, DrawerHeader.DrawerCallBack, DrawerMenuItem.DrawerCallBack {
-
-    override val kodein by kodein()
-
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: MainViewModel
+class MainActivity: BaseActivity<ActivityMainBinding, MainViewModel>(MainViewModel::class.java, R.layout.activity_main),
+    DrawerHeader.DrawerCallBack, DrawerMenuItem.DrawerCallBack {
 
     private var selectedMenuItemPosition: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
-        val viewModelFactory: ViewModelProviderFactory by kodein.instance()
-        viewModel = viewModelFactory.create(MainViewModel::class.java)
 
         initUi()
         subscribeUi()
@@ -99,6 +85,5 @@ class MainActivity : AppCompatActivity(), KodeinAware, DrawerHeader.DrawerCallBa
         }
 
         return super.onOptionsItemSelected(item)
-
     }
 }

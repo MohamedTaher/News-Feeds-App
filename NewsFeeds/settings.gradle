@@ -1,2 +1,4 @@
+include ':common:views'
+include ':common:network'
 rootProject.name='NewsFeeds'
 include ':app'
